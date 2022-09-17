@@ -27,6 +27,36 @@ class spam:
 			return f'\x1b[92mSpamm kitabisa {self.nomer} \033[1;32mSuccess!'
 		elif hasil.status_code == 500:
 			return f'\x1b[91mSpamm kitabisa {self.nomer} \x1b[91mFail!'
+		
+		def shpee(self):
+		rands=random.choice(open('ua.txt').readlines()).split('\n')[0]
+		kirim = {
+			'User-Agent' : rands,
+			'Accept-Encoding' : 'gzip, deflate',
+			'Connection' : 'keep-alive',
+			'Origin' : 'https://shopee.co.id/buyer/signup',
+			'Accept' : 'application/json, text/javascript, */*; q=0.01',
+			'X-Requested-With' : 'XMLHttpRequest',
+			'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+		}
+		regist = requests.get('https://shopee.co.id/buyer/signup?next=https%3A%2F%2Fshopee.co.id%2F%3Fgclid%3DCjwKCAjw4JWZBhApEiwAtJUN0Luitcx74AS1VWVl3SQ_zkSgUON6AWQoB8N2oAkLtxc8BnVdRsjBXxoC0jUQAvD_BwE', headers = kirim).text
+		Token = re.search(r'\<input\ id=\"Token\"\ value=\"(.*?)\"\ type\=\"hidden\"\>', regist).group(1)
+		formulir = {
+			"otp_type" : "116",
+			"msisdn" : self.nomer,
+			"tk" : Token,
+			"email" : '',
+			"original_param" : "",
+			"user_id" : "",
+			"signature" : "",
+			"number_otp_digit" : "6"
+		}
+		req = requests.post('https://shopee.co.id/buyer/signup/otp/c/ajax/request-wa', headers = kirim, data = formulir).text
+		if 'Anda sudah melakukan 3 kali pengiriman kode' in req:
+			return f'\x1b[91mSpamm Shope {self.nomer} \x1b[91mFail!'
+		else:
+			return f'\x1b[92mSpamm Shope {self.nomer} {h}Success!'
+
 			
 	def tokped(self):
 		rands=random.choice(open('ua.txt').readlines()).split('\n')[0]
@@ -123,12 +153,15 @@ def files():
 				z=spam(io)
 				if jns == 'ktbs':
 					print('\t'+z.spam().__str__())
+				elif jns == 'shope':
+			                print('\t'+z.shpee())
 				elif jns == 'tkpd':
 					print('\t'+z.tokped().__str__())
 				elif jns == 'blji':
 					print('\t'+z.balaji().__str__())
 				elif jns == 'smua':
 					print('\t'+z.spam().__str__())
+					print('\t'+z.shpee())
 					print('\t'+z.tokped().__str__())
 					print('\t'+z.balaji().__str__())
 					print('\t'+z.phd().__str__())
@@ -151,12 +184,15 @@ def single():
 		z=spam(nomer)
 		if jns == 'ktbs':
 			print('\t'+z.spam().__str__())
+		elif jns == 'shope':
+			print('\t'+z.shpee())
 		elif jns == 'tkpd':
 			print('\t'+z.tokped())
 		elif jns == 'blji':
 			print('\t'+z.balaji())
 		elif jns == 'smua':
 			print('\t'+z.spam().__str__())
+			print('\t'+z.shpee())
 			print('\t'+z.tokped())
 			print('\t'+z.balaji())
 			print('\t'+z.phd())
@@ -182,12 +218,15 @@ def multi():
 			z=spam(nomer[ss])
 			if jns == 'ktbs':
 				print('\t'+z.spam().__str__())
+			elif jns == 'shope':
+			        print('\t'+z.shpee())	
 			elif jns == 'tkpd':
 				print('\t'+z.tokped())
 			elif jns == 'blji':
 				print('\t'+z.balaji())
 			elif jns == 'smua':
 				print('\t'+z.spam().__str__())
+				print('\t'+z.shpee())
 				print('\t'+z.tokped())
 				print('\t'+z.balaji())
 				print('\t'+z.phd())
@@ -230,12 +269,15 @@ def termux():
 		z=spam(nj)
 		if jns == 'ktbs':
 			print('\t'+z.spam().__str__())
+		elif jns == 'shope':
+			print('\t'+z.shpee())	
 		elif jns == 'tkpd':
 			print('\t'+z.tokped())
 		elif jns == 'blji':
 			print('\t'+z.balaji())
 		elif jns == 'smua':
 			print('\t'+z.spam().__str__())
+			print('\t'+z.shpee())
 			print('\t'+z.tokped())
 			print('\t'+z.balaji())
 			print('\t'+z.phd())
@@ -280,12 +322,15 @@ def jnspam():
 			jns='ktbs'
 			break
 		elif( oy == '4' or oy == '04' ):
+			jns='shope'
+			break
+		elif( oy == '5' or oy == '04' ):
 			jns='tkpd'
 			break
-		elif( oy == '5' or oy == '05' ):
+		elif( oy == '6' or oy == '05' ):
 			jns='ttk'
 			break
-		elif( oy == '6' or oy == '06' ):
+		elif( oy == '7' or oy == '06' ):
 			jns='blji'
 			break
 		elif( oy == '0' or oy == '00' ):
