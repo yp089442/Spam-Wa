@@ -154,14 +154,14 @@ def files():
 				if jns == 'ktbs':
 					print('\t'+z.spam().__str__())
 				elif jns == 'shope':
-			                print('\t'+z.shpee())
+			                print('\t'+z.shpee().__str__())
 				elif jns == 'tkpd':
 					print('\t'+z.tokped().__str__())
 				elif jns == 'blji':
 					print('\t'+z.balaji().__str__())
 				elif jns == 'smua':
 					print('\t'+z.spam().__str__())
-					print('\t'+z.shpee())
+					print('\t'+z.shpee().__str__())
 					print('\t'+z.tokped().__str__())
 					print('\t'+z.balaji().__str__())
 					print('\t'+z.phd().__str__())
