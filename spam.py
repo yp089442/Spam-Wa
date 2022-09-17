@@ -28,7 +28,7 @@ class spam:
 		elif hasil.status_code == 500:
 			return f'\x1b[91mSpamm kitabisa {self.nomer} \x1b[91mFail!'
 		
-		def shpee(self):
+	def shpee(self):
 		rands=random.choice(open('ua.txt').readlines()).split('\n')[0]
 		kirim = {
 			'User-Agent' : rands,
